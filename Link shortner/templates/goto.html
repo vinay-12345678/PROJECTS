@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Link Shortner</title>
+        <style>
+            body{
+                background-color:springgreen;
+            }
+            h1.head{
+                font-size: 300%;
+            }
+            table.centre{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1 class ="head" style="text-align: center;">Link Shortner</h1>
+        <br>
+
+        <form action="http://127.0.0.1:8000/find" method="POST">
+            <table class="centre">
+                <tr>
+                    <td>
+                        Enter User Name:
+                    </td>
+                    <td>
+                        <input type="text" name="user">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Enter short form:
+                    </td>
+                    <td>
+                        <input type="text" name="short">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="submit"> 
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        
+    </body>
+</html>
