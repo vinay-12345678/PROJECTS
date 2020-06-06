@@ -1,9 +1,14 @@
 import speech_recognition as sr
+import winsound
 r=sr.Recognizer()
 
 while True:
 
     with sr.Microphone() as source:
+        frequency=5000
+        duration=1000
+        winsound.Beep(frequency,duration)
+
         print("SPEAK :  ")
         audio=r.listen(source)
 
@@ -20,6 +25,6 @@ while True:
             else:
                 continue
         except:
-            print("Can't recognize, Plese try again!!")
+            print("Can't recognize, Please try again!!")
 
     
