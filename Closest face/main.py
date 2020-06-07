@@ -56,3 +56,4 @@ np.save(dataset_path+file_name+".npy",face_data)
 print("face saved")
 cap.release()
 cv2.destroyAllWindows()
+
