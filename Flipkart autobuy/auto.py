@@ -5,20 +5,26 @@ import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-em=input("Enter registered Email/Number on flipkart:     ")
-ps=input("Enter password                           :     ")
-mob=input("Enter product                            :     ")
+
+em=input("Enter email/phone registered on Flipkart  :     ")
+ps=input("Enter password                            :     ")
+mob=input("Enter product                             :     ")
+pin=input("Enter pincode                             :     ")
 
 
 driver=webdriver.Chrome(executable_path="C:\DRIVERS\chromedriver")
 driver.get("https://www.flipkart.com")
 driver.maximize_window()
 
-driver.implicitly_wait(10)   #website load nhi hue toh max. 5 sec rukega
-wait=WebDriverWait(driver,3600)
+driver.implicitly_wait(20)   #website load nhi hue toh max. 5 sec rukega
+wait=WebDriverWait(driver,10)
+
+try:
+    login=wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div/div/div/div/div[2]/div/form/div[3]/button')))
+except:
+    login=wait.until(EC.element_to_be_clickable((By.XPATH,'//*[contains(@class,"_2AkmmA _1LctnI _7UHT_c)]')))
 
 
-login=wait.until(EC.element_to_be_clickable((By.XPATH,'/html/body/div[2]/div/div/div/div/div[2]/div/form/div[3]/button')))
 email=driver.find_element_by_xpath('/html/body/div[2]/div/div/div/div/div[2]/div/form/div[1]/input')
 if(email.is_displayed()):
     email.send_keys(em)
@@ -47,5 +53,23 @@ for w in windows:
 
 driver.maximize_window()
 
-buy=wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="container"]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div/ul/li[2]/form/button')))
-buy.click()
+check=wait.until(EC.element_to_be_clickable((By.CLASS_NAME,'_2aK_gu')))
+address=driver.find_element_by_xpath('//*[@id="pincodeInputId"]')
+if(address.is_enabled()):
+    address.send_keys(pin)
+    check.click()
+
+
+waitt=WebDriverWait(driver,0.1)
+while(1):
+    try:
+        buy=waitt.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="container"]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div/ul/li[2]/form/button')))
+        buy.click()
+        
+    except :
+        try:
+            buy=waitt.until(EC.element_to_be_clickable((By.XPATH,'//*[contains(@class,"_2AkmmA _2Npkh4 _2kuvG8 _7UHT_c")]')))
+            buy.click()
+        except:
+            driver.refresh()
+
