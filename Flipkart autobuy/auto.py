@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-em=input("Enter email/phone registered on Flipkart  :     ")
+em=input("Enter email registered on Flipkart  :     ")
 ps=input("Enter password                            :     ")
 mob=input("Enter product                             :     ")
 pin=input("Enter pincode                             :     ")
@@ -16,7 +16,7 @@ driver=webdriver.Chrome(executable_path="C:\DRIVERS\chromedriver")
 driver.get("https://www.flipkart.com")
 driver.maximize_window()
 
-driver.implicitly_wait(20)   #website load nhi hue toh max. 5 sec rukega
+driver.implicitly_wait(20)   #website load nhi hue toh max. 20 sec rukega
 wait=WebDriverWait(driver,10)
 
 try:
