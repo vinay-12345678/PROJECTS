@@ -63,5 +63,3 @@ while True:
 
         except:
             speak("Can't recognize, Please try again!!")
-
-    
