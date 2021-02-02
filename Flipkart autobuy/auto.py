@@ -72,4 +72,3 @@ while(1):
             buy.click()
         except:
             driver.refresh()
-
