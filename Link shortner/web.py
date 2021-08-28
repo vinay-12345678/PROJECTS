@@ -4,7 +4,7 @@ app= Flask(__name__)
 
 @app.route("/")
 def step1():
-    return render_template("create.html")
+    return render_template("index.html")
 
 @app.route("/create" ,methods=['POST'] )
 def create():
@@ -17,9 +17,9 @@ def create():
             for i in fil:
                 list=i.strip().split()
                 if(list[0]==short):
-                    return "TRY AGAIN"+"\n"+"Short Form Alredy Exist"
+                    return "TRY AGAIN"+"\n"+"Short Form Already Exist"
                 if(list[1]==url):
-                    return "TRY AGAIN"+"\n"+"URL Alredy Exist"
+                    return "TRY AGAIN"+"\n"+"URL Already Exist"
 
     except:
         with open ('{}.txt'.format(user),'a') as fil:
@@ -59,3 +59,4 @@ def func(name):
 
 if __name__ ==  "__main__":
     app.run(debug=True,port=8000)
+

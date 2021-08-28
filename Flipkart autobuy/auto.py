@@ -11,8 +11,8 @@ ps=input("Enter password                            :     ")
 mob=input("Enter product                             :     ")
 pin=input("Enter pincode                             :     ")
 
-
-driver=webdriver.Chrome(executable_path="C:\DRIVERS\chromedriver")
+executable_path="C:\Program Files (x86)\chromedriver.exe"
+driver=webdriver.Chrome(executable_path)
 driver.get("https://www.flipkart.com")
 driver.maximize_window()
 
