@@ -13,6 +13,15 @@ def create():
     short= request.form['short']
 
     try:
+        if(len(user)==0):
+            return " User can't be blank "
+        
+        if(len(url)==0):
+            return " URL can't be blank "
+        
+        if(len(short)==0):
+            return " Short form can't be blank "
+
         with open ('{}.txt'.format(user),'r') as fil:
             for i in fil:
                 list=i.strip().split()
@@ -41,7 +50,13 @@ def find():
             for i in fil:
                 list=i.strip().split()
                 if(list[0]==short):
-                    return redirect("https://"+list[1])
+                    if(list[1][0:8]=="https://"):
+                        return redirect(list[1])
+                    else :
+                        return redirect("https://"+list[1])
+
+            str="Short Form Doesn't Exist in User "+ user
+            return str
 
     except:
         return redirect(url_for("notfound"))
