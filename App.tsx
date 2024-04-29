@@ -5,6 +5,8 @@ import axios from 'axios';
 import NewsHeadlines from './components/NewsHeadlines';
 import _isEmpty from 'lodash/isEmpty';
 
+// run -> "npx run ios"
+
 
 const NEWS_API_URL = `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=126e3a608331412b9f0d8ce770e4975a`;
 //126e3a608331412b9f0d8ce770e4975a
@@ -60,7 +62,6 @@ const App = () => {
     if (_isEmpty(headlines) || !shouldSetInterval) {
       return;
     }
-    console.log({headlines})
     const myInterval = setInterval(() => {
       setIndex(old => {
         let newValue = old + batchSize;
